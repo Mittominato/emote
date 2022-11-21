@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>emote</title>
+    <style type="text/css" media="all">
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+        }
+        .animation {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            border-radius: 20px 5px 20px 5px;
+            padding: 5px;
+            box-sizing: border-box;
+            display: none;
+            transition: 5s;
+
+        }
+        .emote {
+            display: inline-block;
+            font-size: 2rem;
+            width: 100%;
+            transition: 5s;
+            text-align: center;
+        }
+        #emote {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <section id="emote">
+    </section>
+    <script type="text/javascript" charset="utf-8">
+        //Animasi
+        setTimeout(() => {
+            showEmote();
+        }, 0)
+        setTimeout(() => {
+            showEmote();
+        }, 1500);
+        setInterval(() => {
+            showEmote();
+        }, 5000);
+        
+        function showEmote() {
+            [...document.querySelectorAll(".animation")].forEach(emote => emote.style.marginLeft = `${randomX()}%`);
+            [...document.querySelectorAll(".animation")].forEach(emote => emote.style.marginTop = `${randomY()}%`);
+            [...document.querySelectorAll(".emote")].forEach(e => e.innerHTML = createEmote());
+            [...document.querySelectorAll(".animation")].forEach(e => e.style.display = "inline-block");
+            [...document.querySelectorAll(".animation")].forEach(e => e.style.transform = `scale(${scale()})`);
+            [...document.querySelectorAll(".animation")].forEach(e => e.style.backgroundColor = `${warna()}`);
+        }
+        function createElementdiv() {
+            for (i = [...document.querySelectorAll(".emote")].length; i < 10; i++) {
+                let div = document.createElement("div");
+                div.setAttribute("class", "animation");
+                let emoji = `<span class="emote"></span>`;
+                div.innerHTML = emoji;
+                document.querySelector("#emote").appendChild(div);
+            }}
+        createElementdiv();
+        function createEmote() {
+            const emoji = Math.floor(Math.random()*19);
+            switch (emoji) {
+                case 0: return "👋";
+                    break;
+                case 1: return "🤔";
+                    break;
+                case 2: return "😎";
+                    break;
+                case 3: return "😝";
+                    break;
+                case 4: return "😄";
+                    break;
+                case 5: return "🐼";
+                    break;
+                case 6: return "🐻";
+                    break;
+                case 7: return "🐮";
+                    break;
+                case 8: return "🐱";
+                    break;
+                case 9: return "🐶";
+                    break;
+                case 10: return "🤩";
+                    break;
+                case 11: return "😍";
+                    break;
+                case 12: return "🥳";
+                    break;
+                case 13: return "🥰";
+                    break;
+                case 14: return "🤣";
+                    break;
+                case 15: return "😊";
+                    break;
+                case 16: return "🎮";
+                    break;
+                case 17: return "🎠";
+                    break;
+                case 18: return "⚽";
+                    break;
+            }
+        }
+        function warna() {
+            const w = Math.floor(Math.random()*6);
+            switch (w) {
+                case 0: return "red";
+                    break;
+                case 1: return "skyblue";
+                    break;
+                case 2: return "yellow";
+                    break;
+                case 3: return "rgba(100,149,237,1)";
+                    break;
+                case 4: return "pink";
+                    break;
+                case 5: return "purple";
+            }
+        }
+        function randomY() {
+            return Math.floor(Math.random()*180-10);
+        }
+        function randomX() {
+            return Math.floor(Math.random()*100-10);
+        }
+        function scale() {
+            return Math.random()*1.2;
+        }
+
+    </script>
+</body>
+</html>
